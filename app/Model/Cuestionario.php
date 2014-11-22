@@ -29,14 +29,6 @@ class Cuestionario extends AppModel {
 				//'last' => false, // Stop validation after this rule
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
-			'uuid' => array(
-				'rule' => array('uuid'),
-				//'message' => 'Your custom message here',
-				//'allowEmpty' => false,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
-			),
 		),
 		'num_preguntas' => array(
 			'numeric' => array(
