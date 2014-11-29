@@ -16,6 +16,15 @@ class UsersController extends AppController {
  */
 	public $components = array('Paginator', 'Session');
 
+	/**
+	 * Nos permite registrarnos en el sistema
+	 * Nota no es necesario iniciar sesión.
+	 */
+	public function beforeFilter() {
+        parent::beforeFilter();
+        $this->Auth->allow('add');
+    }
+
 /**
  * index method
  *
@@ -104,6 +113,24 @@ class UsersController extends AppController {
 	}
 	
 	public function login() {
-
+		if ($this->request->is('post')) {
+			if ($this->Auth->login()) {
+				return $this->redirect(
+					array(
+						'controller' => 'cuestinarios',
+						'action' => 'index'
+					)
+				);
+				// Prior to 2.3 use
+				// `return $this->redirect($this->Auth->redirect());`
+			} else {
+				$this->Session->setFlash(
+					'Error revise el nombre usuario/password',
+					'default',
+					array(),
+					'auth'
+				);
+			}
+		}
 	}
 }
