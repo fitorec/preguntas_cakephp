@@ -48,8 +48,11 @@ class CuestionariosController extends AppController {
  */
 	public function add() {
 		if ($this->request->is('post')) {
+			$data = &$this->request->data;
+			$data['Cuestionario']['num_preguntas'] = 0;
+			$data['Cuestionario']['publicado'] = 1;
 			$this->Cuestionario->create();
-			if ($this->Cuestionario->save($this->request->data)) {
+			if ($this->Cuestionario->save($data)) {
 				$this->Session->setFlash(__('The cuestionario has been saved.'));
 				return $this->redirect(array('action' => 'index'));
 			} else {

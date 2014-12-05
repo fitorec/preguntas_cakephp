@@ -5,7 +5,6 @@
 	<?php
 		echo $this->Form->input('username');
 		echo $this->Form->input('password');
-		echo $this->Form->input('tipo');
 		echo $this->Form->input('email');
 	?>
 	</fieldset>

@@ -28,7 +28,7 @@ SET time_zone = "+00:00";
 DROP TABLE IF EXISTS cuestonarios;
 CREATE TABLE IF NOT EXISTS `cuestionarios` (
   `id` int(6) NOT NULL PRIMARY KEY AUTO_INCREMENT,
-  `nombre` varchar(50) NOT NULL,
+  `nombre` varchar(50) NOT NULL UNIQUE KEY,
   `num_preguntas` int(11) NOT NULL,
   `publicado` tinyint(1) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
@@ -71,21 +71,6 @@ CREATE TABLE IF NOT EXISTS historiales(
 -- Índices para tablas volcadas
 --
 
---
--- Indices de la tabla `cuestionario`
---
-ALTER TABLE `cuestionario`
- ADD PRIMARY KEY (`id`), ADD UNIQUE KEY `nombre` (`nombre`);
-
---
--- AUTO_INCREMENT de las tablas volcadas
---
-
---
--- AUTO_INCREMENT de la tabla `cuestionario`
---
-ALTER TABLE `cuestionario`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

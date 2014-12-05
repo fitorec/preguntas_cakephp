@@ -57,8 +57,11 @@ class UsersController extends AppController {
  */
 	public function add() {
 		if ($this->request->is('post')) {
+			$data = &$this->request->data;
+			$data['User']['tipo'] = 'Alumno';
+			$data['User']['password'] = $this->Auth->password($data['User']['password']);
 			$this->User->create();
-			if ($this->User->save($this->request->data)) {
+			if ($this->User->save($data)) {
 				$this->Session->setFlash(__('The user has been saved.'));
 				return $this->redirect(array('action' => 'index'));
 			} else {
@@ -117,7 +120,7 @@ class UsersController extends AppController {
 			if ($this->Auth->login()) {
 				return $this->redirect(
 					array(
-						'controller' => 'cuestinarios',
+						'controller' => 'cuestionarios',
 						'action' => 'index'
 					)
 				);

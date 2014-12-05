@@ -56,8 +56,8 @@ class PreguntasController extends AppController {
 				$this->Session->setFlash(__('The pregunta could not be saved. Please, try again.'));
 			}
 		}
-		$custionarios = $this->Pregunta->Custionario->find('list');
-		$this->set(compact('custionarios'));
+		$cuestionarios = $this->Pregunta->Cuestionario->find('list');
+		$this->set(compact('cuestionarios'));
 	}
 
 /**
@@ -82,8 +82,8 @@ class PreguntasController extends AppController {
 			$options = array('conditions' => array('Pregunta.' . $this->Pregunta->primaryKey => $id));
 			$this->request->data = $this->Pregunta->find('first', $options);
 		}
-		$custionarios = $this->Pregunta->Custionario->find('list');
-		$this->set(compact('custionarios'));
+		$cuestionarios = $this->Pregunta->Cuestionario->find('list');
+		$this->set(compact('cuestionarios'));
 	}
 
 /**

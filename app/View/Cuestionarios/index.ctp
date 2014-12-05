@@ -43,8 +43,7 @@
 <div class="actions">
 	<h3>Acciones</h3>
 	<ul>
-		<li><?php echo $this->Html->link(__('New Cuestionario'), array('action' => 'add')); ?></li>
-		<li><?php echo $this->Html->link(__('List Historiales'), array('controller' => 'historiales', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Historial'), array('controller' => 'historiales', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('Agregar Cuestionario'), array('action' => 'add')); ?></li>
+		<li><?php echo $this->Html->link(__('Historiales'), array('controller' => 'historiales', 'action' => 'index')); ?> </li>
 	</ul>
 </div>
