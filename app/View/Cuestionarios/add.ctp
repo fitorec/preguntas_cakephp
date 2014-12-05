@@ -1,47 +1,20 @@
+<?php
+$this->Html->script(
+	array('cuestionarios_agregar'),
+	array('inline' => false)
+);
+?>
 <div class="cuestionarios form">
 <?php echo $this->Form->create('Cuestionario'); ?>
 	<fieldset>
-		<legend><?php echo __('Add Cuestionario'); ?></legend>
+		<legend><?php echo __('Agregar Cuestionario'); ?></legend>
 	<?php
 		echo $this->Form->input('nombre');
 	?>
-	<button class='btn btn-success btn-add-pregunta'>+ Pregunta</button>
-	<?php
-		echo $this->Form->input('pregunta');
-	?>
-	<table>
-		<thead>
-			<tr>
-				<th>respuesta</th>
-				<th>cierta</th>
-				<th>acciones</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr>
-				<td><input name=''></td>
-				<td><input type='checkbox'></td>
-				<td></td>
-			</tr>
-		</tbody>
-	</table>
-	<ul>
-		<li>
-			<?php
-				echo $this->Form->input('respuesta');
-			?>
-		</li>
-		<li>
-			<?php
-				echo $this->Form->input('respuesta');
-			?>
-		</li>
-		<li>
-			<button class='btn btn-success btn-add-respuesta'>+ Respuesta</button>
-		</li>
-	</ul>
+	<div id='preguntas-contenedor'></div>
+	<button class='btn btn-success' id='btn-add-pregunta'>+ Pregunta</button>
 	</fieldset>
-<?php echo $this->Form->end(__('Submit')); ?>
+<?php echo $this->Form->end(__('Agregar Cuestionario')); ?>
 </div>
 <div class="actions">
 	<h3><?php echo __('Actions'); ?></h3>

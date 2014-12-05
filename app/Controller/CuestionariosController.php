@@ -51,6 +51,7 @@ class CuestionariosController extends AppController {
 			$data = &$this->request->data;
 			$data['Cuestionario']['num_preguntas'] = 0;
 			$data['Cuestionario']['publicado'] = 1;
+			die(pr($data));
 			$this->Cuestionario->create();
 			if ($this->Cuestionario->save($data)) {
 				$this->Session->setFlash(__('The cuestionario has been saved.'));
