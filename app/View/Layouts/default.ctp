@@ -41,7 +41,34 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 <body>
 	<div id="container">
 		<div id="header">
-			<h1><?php echo $this->Html->link($cakeDescription, '/'); ?></h1>
+			<div class="navbar-header">
+			  <button data-target=".bs-navbar-collapse" data-toggle="collapse" type="button" class="navbar-toggle collapsed">
+				<span class="sr-only">Cambio de navegación	</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			  </button>
+			  <?php echo $this->Html->link($cakeDescription, '/'); ?>
+			</div>
+			<ul class="nav navbar-nav navbar-right">
+				<?php
+				if($tipo_usuario == 'Internauta') {
+					echo '<li>'.$this->Html->link(
+						'Login',
+						array('controller' => 'users', 'action' => 'login')
+					).'</li>';
+					echo '<li>'.$this->Html->link(
+						'Registrate',
+						array('controller' => 'users', 'action' => 'add')
+					).'</li>';
+				} else {
+					echo '<li>'.$this->Html->link(
+						'Logout',
+						array('controller' => 'users', 'action' => 'logout')
+					).'</li>';
+				}
+				?>
+			  </ul>
 		</div>
 		<div id="content">
 

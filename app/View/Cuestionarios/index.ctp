@@ -17,10 +17,29 @@
 		<td><?php echo h($cuestionario['Cuestionario']['nombre']); ?>&nbsp;</td>
 		<td><?php echo h($cuestionario['Cuestionario']['num_preguntas']); ?>&nbsp;</td>
 		<td><?php echo h($cuestionario['Cuestionario']['publicado']); ?>&nbsp;</td>
-		<td class="actions">
-			<?php echo $this->Html->link(__('View'), array('action' => 'view', $cuestionario['Cuestionario']['id'])); ?>
-			<?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $cuestionario['Cuestionario']['id'])); ?>
-			<?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $cuestionario['Cuestionario']['id']), array(), __('Are you sure you want to delete # %s?', $cuestionario['Cuestionario']['id'])); ?>
+		<td>
+			<div class="btn-group" role="group" aria-label="...">
+				<?php
+				echo $this->Html->link(
+					__('Responder'),
+					array('action' => 'view', $cuestionario['Cuestionario']['id']),
+					array('class' => 'btn btn-default')
+				);
+				if( $tipo_usuario == 'Profesor') {
+					echo $this->Form->postLink(
+						__('Borrar'),
+						array('action' => 'delete', $cuestionario['Cuestionario']['id']),
+						array('class' => 'btn btn-default'),
+						__('Are you sure you want to delete # %s?', $cuestionario['Cuestionario']['id'])
+					);
+					echo $this->Html->link(
+						__('Editar'),
+						array('action' => 'edit', $cuestionario['Cuestionario']['id']),
+						array('class' => 'btn btn-default')
+					);
+				}
+				?>
+			</div>
 		</td>
 	</tr>
 <?php endforeach; ?>

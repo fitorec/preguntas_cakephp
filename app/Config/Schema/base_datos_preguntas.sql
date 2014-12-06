@@ -71,6 +71,47 @@ CREATE TABLE IF NOT EXISTS historiales(
 -- Índices para tablas volcadas
 --
 
+--
+-- Base de datos: `preguntas`
+--
+
+--
+-- Volcado de datos para la tabla `cuestionarios`
+--
+
+INSERT INTO `cuestionarios` (`id`, `nombre`, `num_preguntas`, `publicado`) VALUES
+(1, 'Cuestionario CakePHP', 3, 1);
+
+--
+-- Volcado de datos para la tabla `preguntas`
+--
+
+INSERT INTO `preguntas` (`id`, `nombre`, `cuestionario_id`, `num_respuestas`) VALUES
+(1, 'Pregunta1', 1, 3),
+(2, 'Pregunta2', 1, 2),
+(3, 'Pregunta3', 1, 3);
+
+--
+-- Volcado de datos para la tabla `respuestas`
+--
+
+INSERT INTO `respuestas` (`id`, `pregunta_id`, `valor`, `es_cierta`) VALUES
+(1, 1, 'Pregunta1 respuesta1', 1),
+(2, 1, 'Pregunta1 respuesta2', 0),
+(3, 1, 'Pregunta1 respuesta3', 0),
+(4, 2, 'Pregunta2 respuesta1', 0),
+(5, 2, 'Pregunta2 respuesta2', 1),
+(6, 3, 'Pregunta3 respuesta1', 0),
+(7, 3, 'Pregunta3 respuesta2', 0),
+(8, 3, 'Pregunta3 respuesta3', 1);
+
+--
+-- Volcado de datos para la tabla `users`
+--
+
+INSERT INTO `users` (`id`, `username`, `password`, `tipo`, `email`) VALUES
+(1, 'fitorec', '65d61b64d9c82f1c9598175e303de5e4a27b294b', 'Profesor', 'chanerec@gmail.com');
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

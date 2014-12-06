@@ -38,7 +38,36 @@ class CuestionariosController extends AppController {
 			throw new NotFoundException(__('Invalid cuestionario'));
 		}
 		$options = array('conditions' => array('Cuestionario.' . $this->Cuestionario->primaryKey => $id));
-		$this->set('cuestionario', $this->Cuestionario->find('first', $options));
+		$this->Cuestionario->recursive = 2;
+		$this->Cuestionario->unbindModel(
+			array(
+				'hasMany' => array('Historial')
+			)
+		);
+		$this->Cuestionario->Pregunta->unbindModel(
+			array(
+				'belongsTo' => array('Cuestionario')
+			)
+		);
+		$cuestionario = $this->Cuestionario->find('first', $options);
+		//die(pr($cuestionario));
+		$preguntas = array();
+		foreach($cuestionario['Pregunta'] as $i => $p) {
+			$preguntas[$i] = array(
+				'pregunta'   => $p['nombre'],
+				'contestada' => false,
+				'respuestas' => array()
+			);
+			foreach($p['Respuesta'] as $j => $respuesta) {
+				$preguntas[$i]['respuestas'][$j] = array(
+					'txt'    => $respuesta['valor'],
+					'valida' => $respuesta['es_cierta']
+				);
+			}
+		}
+		unset($cuestionario['Pregunta']);
+		$this->set('preguntas', $preguntas);
+		$this->set('cuestionario', $cuestionario);
 	}
 
 /**

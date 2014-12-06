@@ -51,7 +51,7 @@ class Pregunta extends AppModel {
  * @var array
  */
 	public $belongsTo = array(
-		'cuestionario' => array(
+		'Cuestionario' => array(
 			'className' => 'Cuestionario',
 			'foreignKey' => 'cuestionario_id',
 			'conditions' => '',

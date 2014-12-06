@@ -34,4 +34,14 @@ class AppController extends Controller {
 // Pass settings in $components array
 public $components = array('Auth');
 
+	public function	beforeFilter() {
+		$userAuth = null;
+		$this->Auth->loginRedirect = '/';
+		$tipo_usuario = 'Internauta';
+		if ($this->Auth->loggedIn()) {
+			$userAuth = $this->Auth->user();
+			$tipo_usuario = $userAuth['tipo'];
+		}
+		$this->set('tipo_usuario', $tipo_usuario);
+	}
 }

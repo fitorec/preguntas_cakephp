@@ -124,8 +124,6 @@ class UsersController extends AppController {
 						'action' => 'index'
 					)
 				);
-				// Prior to 2.3 use
-				// `return $this->redirect($this->Auth->redirect());`
 			} else {
 				$this->Session->setFlash(
 					'Error revise el nombre usuario/password',
@@ -135,5 +133,8 @@ class UsersController extends AppController {
 				);
 			}
 		}
+	}
+	public function logout() {
+		return $this->redirect($this->Auth->logout());
 	}
 }
