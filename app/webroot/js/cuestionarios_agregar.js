@@ -15,7 +15,7 @@ $(function() {
 	// Handler for .ready() called.
 	var divPregunta = '<div class="input text" id="div_pregunta-{0}">' +
 		'<label for="CuestionarioPregunta">{1}.- Pregunta <button class="btn btn-danger quitar-pregunta" title="quitar pregunta">-</button></label>' +
-		'<input type="text" id="CuestionarioPregunta" name="data[Preguntas][{2}][pregunta]">' +
+		'<input type="text" id="CuestionarioPregunta" name="data[Preguntas][{2}][nombre]">' +
 		'<table class="respuestas">' +
 		'<thead><tr><th>#</th><th>respuesta</th><th>cierta</th><th>quitar</th></tr>' +
 		'</thead>' +
@@ -52,8 +52,8 @@ $(function() {
 
 function agregarPregunta(num_pregunta) {
 	var tr = "<tr><td>{0}</td>"
-	+ "<td><input name='data[Preguntas][{1}][respuesta_{2}]'></td>"
-	+ "<td><input  name='data[Preguntas][{3}][cierta_{4}]' type='checkbox'></td>"
+	+ "<td><input name='data[Preguntas][{1}][respuestas][{2}][valor]'></td>"
+	+ "<td><input name='data[Preguntas][{3}][respuestas][{4}][es_cierta]' type='checkbox'></td>"
 	+ "<td><button title='quitar respuesta' class='btn btn-danger quitar-respuesta'>-</button></td></tr>";
 	$table = $('#div_pregunta-'+num_pregunta).find('table.respuestas tbody');
 	numRespuestas = $table.find('tr').length;

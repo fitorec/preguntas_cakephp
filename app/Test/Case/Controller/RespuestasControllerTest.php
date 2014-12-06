@@ -15,7 +15,7 @@ class RespuestasControllerTest extends ControllerTestCase {
 	public $fixtures = array(
 		'app.respuesta',
 		'app.pregunta',
-		'app.custionario'
+		'app.cuestionario'
 	);
 
 /**

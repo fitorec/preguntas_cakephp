@@ -51,13 +51,39 @@ class CuestionariosController extends AppController {
 			$data = &$this->request->data;
 			$data['Cuestionario']['num_preguntas'] = 0;
 			$data['Cuestionario']['publicado'] = 1;
-			die(pr($data));
+			$data['Cuestionario']['num_preguntas'] = count($data['Preguntas']);
+			$dataSource = $this->Cuestionario->getDataSource();
+			$dataSource->begin();
 			$this->Cuestionario->create();
-			if ($this->Cuestionario->save($data)) {
-				$this->Session->setFlash(__('The cuestionario has been saved.'));
+			$cuestionario = $this->Cuestionario->save($data);
+			if ($cuestionario) {
+				$this->Session->setFlash('Su cuestionario fue guardado con exito.');
+				foreach($data['Preguntas'] as $numPregunta => $p) {
+					$this->Cuestionario->Pregunta->create();
+					$preguntaData = array(
+						'Pregunta' => array(
+							'nombre' => $p['nombre'],
+							'cuestionario_id' => $cuestionario['Cuestionario']['id'],
+							'num_respuestas' => count($p['respuestas']),
+						)
+					);
+					$pregunta = $this->Cuestionario->Pregunta->save($preguntaData);
+					foreach($p['respuestas'] as $r) {
+						$this->Cuestionario->Pregunta->Respuesta->create();
+						$respuestaData = array(
+						'Respuesta'=>array(
+							'pregunta_id' => $pregunta['Pregunta']['id'],
+							'valor' => $r['valor'],
+							'es_cierta' => isset($r['es_cierta'])
+						));
+						$this->Cuestionario->Pregunta->Respuesta->save($respuestaData);
+					}//end foreach respuestas
+				}//end foreach preguntas
+				$dataSource->commit();
 				return $this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The cuestionario could not be saved. Please, try again.'));
+				$this->Session->setFlash('Error al procesar el formulario favor de revisar sus datos');
+				$dataSource->rollback();
 			}
 		}
 	}

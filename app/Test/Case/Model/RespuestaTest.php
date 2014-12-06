@@ -15,7 +15,7 @@ class RespuestaTest extends CakeTestCase {
 	public $fixtures = array(
 		'app.respuesta',
 		'app.pregunta',
-		'app.custionario'
+		'app.cuestionario'
 	);
 
 /**

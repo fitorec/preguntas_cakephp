@@ -37,7 +37,7 @@ DROP TABLE IF EXISTS preguntas;
 CREATE TABLE IF NOT EXISTS `preguntas`(
 	id INT(11) PRIMARY KEY AUTO_INCREMENT,
 	nombre VARCHAR (50) NOT NULL,
-	custionario_id INT(6) NOT NULL,
+	cuestionario_id INT(6) NOT NULL,
 	num_respuestas INT(2)
 ) ENGINE=InnoDB CHARSET=latin1;
 

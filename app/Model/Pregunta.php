@@ -3,7 +3,7 @@ App::uses('AppModel', 'Model');
 /**
  * Pregunta Model
  *
- * @property Custionario $Custionario
+ * @property cuestionario $cuestionario
  * @property Respuesta $Respuesta
  */
 class Pregunta extends AppModel {
@@ -31,7 +31,7 @@ class Pregunta extends AppModel {
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
 		),
-		'custionario_id' => array(
+		'cuestionario_id' => array(
 			'numeric' => array(
 				'rule' => array('numeric'),
 				//'message' => 'Your custom message here',
@@ -51,9 +51,9 @@ class Pregunta extends AppModel {
  * @var array
  */
 	public $belongsTo = array(
-		'Custionario' => array(
-			'className' => 'Custionario',
-			'foreignKey' => 'custionario_id',
+		'cuestionario' => array(
+			'className' => 'Cuestionario',
+			'foreignKey' => 'cuestionario_id',
 			'conditions' => '',
 			'fields' => '',
 			'order' => ''
