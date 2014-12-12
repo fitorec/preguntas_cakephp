@@ -19,7 +19,11 @@ $this->Html->script(
 	echo $this->Html->link(
 		'Iniciar',
 		array('action' => 'login'),
-		array('class' => 'btn btn-primary btn-lg', 'id' => 'btn-iniciar-historial')
+		array(
+			'class' => 'btn btn-primary btn-lg',
+			'id' => 'btn-iniciar-historial',
+			'data-historial-id' => 0,
+		)
 	); ?>
 	</div>
 <div id='contenedor-tablero'>
@@ -45,10 +49,30 @@ $this->Html->script(
 </div><!-- /#contenedor-tablero -->
 </div>
 <?php
-	echo $this->Form->create('Historial');
+	echo $this->Form->create('Historial', array('controller' => 'historiales', 'action' => 'add'));
 	echo $this->Form->input(
 		'cuestionario_id',
 		array('type'=>'hidden','value' => $cuestionario['Cuestionario']['id'])
+	);
+?>
+</form>
+<?php
+	echo $this->Form->create('Historial', array('controller' => 'historiales', 'action' => 'finalizar'));
+	echo $this->Form->input(
+		'cuestionario_id',
+		array('type'=>'hidden','value' => $cuestionario['Cuestionario']['id'])
+	);
+	echo $this->Form->input(
+		'id',
+		array('type'=>'hidden')
+	);
+	echo $this->Form->input(
+		'aciertos',
+		array('type'=>'hidden')
+	);
+	echo $this->Form->input(
+		'data',
+		array('type'=>'text')
 	);
 ?>
 </form>

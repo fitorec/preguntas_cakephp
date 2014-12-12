@@ -3,6 +3,14 @@ $this->Html->script(
 	array('cuestionarios_agregar'),
 	array('inline' => false)
 );
+#sección CSS
+$this->Html->css(
+	array(
+		'cuestionario_add.css',
+	),
+	'stylesheet',
+	array('inline' => false)
+);
 ?>
 <div class="cuestionarios form">
 <?php echo $this->Form->create('Cuestionario'); ?>
@@ -20,8 +28,7 @@ $this->Html->script(
 	<h3><?php echo __('Actions'); ?></h3>
 	<ul>
 
-		<li><?php echo $this->Html->link(__('List Cuestionarios'), array('action' => 'index')); ?></li>
-		<li><?php echo $this->Html->link(__('List Historiales'), array('controller' => 'historiales', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Historial'), array('controller' => 'historiales', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link('Lista de Cuestionarios', array('action' => 'index')); ?></li>
+		<li><?php echo $this->Html->link('Lista de Historiales', array('controller' => 'historiales', 'action' => 'index')); ?> </li>
 	</ul>
 </div>

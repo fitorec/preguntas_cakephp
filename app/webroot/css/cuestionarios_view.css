@@ -1,4 +1,4 @@
-#contenedor-tablero, #HistorialViewForm {
+#contenedor-tablero, #HistorialAddForm, #HistorialFinalizarForm {
    display: none;
 }
 :-moz-full-screen #contenedor-tablero{

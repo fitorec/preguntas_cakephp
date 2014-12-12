@@ -79,8 +79,9 @@ class CuestionariosController extends AppController {
 		if ($this->request->is('post')) {
 			$data = &$this->request->data;
 			$data['Cuestionario']['num_preguntas'] = 0;
-			$data['Cuestionario']['publicado'] = 1;
+			$data['Cuestionario']['publicado']     = 1;
 			$data['Cuestionario']['num_preguntas'] = count($data['Preguntas']);
+			$data['Cuestionario']['profesor_id']   = $this->Auth->user('id'); 
 			$dataSource = $this->Cuestionario->getDataSource();
 			$dataSource->begin();
 			$this->Cuestionario->create();
@@ -151,13 +152,13 @@ class CuestionariosController extends AppController {
 	public function delete($id = null) {
 		$this->Cuestionario->id = $id;
 		if (!$this->Cuestionario->exists()) {
-			throw new NotFoundException(__('Invalid cuestionario'));
+			throw new NotFoundException('Cuestionario invalido.');
 		}
 		$this->request->allowMethod('post', 'delete');
 		if ($this->Cuestionario->delete()) {
-			$this->Session->setFlash(__('The cuestionario has been deleted.'));
+			$this->Session->setFlash('El cuestionario ha sido borrado.');
 		} else {
-			$this->Session->setFlash(__('The cuestionario could not be deleted. Please, try again.'));
+			$this->Session->setFlash('El cuestionario no se ha  podido borrar.');
 		}
 		return $this->redirect(array('action' => 'index'));
 	}

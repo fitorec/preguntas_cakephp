@@ -85,4 +85,18 @@ class User extends AppModel {
 		)
 	);
 
+/**
+ * belongsTo associations
+ *
+ * @var array
+ */
+	public $belongsTo = array(
+		'Profesor' => array(
+			'className' => 'User',
+			'foreignKey' => 'profesor_id',
+			'conditions' => array('User.tipo' => 'Profesor'),
+			'fields' => '',
+			'order' => ''
+		)
+	);
 }

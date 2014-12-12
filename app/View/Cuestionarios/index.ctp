@@ -62,7 +62,9 @@
 <div class="actions">
 	<h3>Acciones</h3>
 	<ul>
+		<?php if( $tipo_usuario == 'Profesor'): ?>
 		<li><?php echo $this->Html->link(__('Agregar Cuestionario'), array('action' => 'add')); ?></li>
+		<?php endif; ?>
 		<li><?php echo $this->Html->link(__('Historiales'), array('controller' => 'historiales', 'action' => 'index')); ?> </li>
 	</ul>
 </div>

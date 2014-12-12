@@ -87,5 +87,18 @@ class Cuestionario extends AppModel {
 			'counterQuery' => ''
 		),
 	);
-
+/**
+ * belongsTo associations
+ *
+ * @var array
+ */
+	public $belongsTo = array(
+		'Profesor' => array(
+			'className' => 'User',
+			'foreignKey' => 'profesor_id',
+			'conditions' => '',
+			'fields' => '',
+			'order' => ''
+		)
+	);
 }
