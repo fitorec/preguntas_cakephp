@@ -1,0 +1,21 @@
+#preguntas-contenedor, table.respuestas {
+	margin-bottom: 0;
+}
+
+table tr td {
+	padding: 0;
+}
+
+table.respuestas tbody tr td input[type=checkbox] {
+	margin-top: 10px;
+}
+
+table.respuestas tbody tr td .quitar-respuesta {
+	margin-top: 2px;
+}
+
+table.respuestas tbody tr td input{
+	font-size: 100%;
+	width    : 100%;
+}
+
